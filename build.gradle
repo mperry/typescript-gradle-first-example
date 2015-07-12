@@ -5,6 +5,7 @@ buildscript {
     }
     dependencies {
         classpath 'de.richsource.gradle.plugins:typescript-gradle-plugin:1.1'
+        classpath 'org.akhikhl.gretty:gretty:+'
     }
 }
 
@@ -12,7 +13,15 @@ buildscript {
 apply plugin: 'java'
 apply plugin: "typescript"
 apply plugin: 'war'
-apply plugin: 'jetty'
+//apply plugin: 'jetty'
+apply plugin: 'org.akhikhl.gretty'
+
+
+war {
+    into("") {
+        from compileTypeScript.outputs
+    }
+}
 
 repositories {
     jcenter()
@@ -31,3 +40,10 @@ dependencies {
     // 'test.useTestNG()' to your build script.
     testCompile 'junit:junit:4.12'
 }
+
+gretty {
+    port = 8080
+    contextPath = '/'
+    servletContainer = 'jetty9'
+}
+

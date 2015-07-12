@@ -1,0 +1,7 @@
+
+
+
+
+This is an example web application using TypeScript code with Gradle.
+
+gradlew -i build jettyRunWar
