@@ -1,0 +1,1 @@
+# typescript-gradle-first-example
